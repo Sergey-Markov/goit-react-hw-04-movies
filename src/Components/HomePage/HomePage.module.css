@@ -1,0 +1,10 @@
+.title {
+  padding: 15px;
+}
+.filmsList {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: normal;
+}

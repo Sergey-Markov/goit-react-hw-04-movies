@@ -1,0 +1,15 @@
+.navigation {
+  display: flex;
+  padding: 15px 15px;
+}
+.items:not(:last-child) {
+  margin-right: 10px;
+}
+.items {
+  font-weight: 500;
+  color: black;
+  font-style: 18px;
+}
+.activeLink {
+  color: rgb(231, 20, 20);
+}
