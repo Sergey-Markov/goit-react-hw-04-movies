@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import * as fetchFilmsAPI from "../../Service/Service";
 import s from "../HomePage/HomePage.module.css";
 
 export default function HomePage() {
   const [trendFilms, setTrendFilms] = useState([]);
-
+  const { url } = useRouteMatch();
   useEffect(() => {
     fetchFilmsAPI.fetchTrendFilms().then((response) => {
       setTrendFilms(response.results);
@@ -20,7 +20,7 @@ export default function HomePage() {
         {trendFilms &&
           trendFilms.map((film) => (
             <li key={film.id}>
-              <NavLink to="/film">{film.original_title}</NavLink>
+              <Link to={`/movies/${film.id}`}>{film.original_title}</Link>
             </li>
           ))}
       </ul>

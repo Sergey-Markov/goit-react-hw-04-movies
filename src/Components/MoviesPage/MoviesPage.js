@@ -68,12 +68,6 @@ export default function MoviesPage() {
       </div>
     );
   }
-
-  // return (
-  //   <>
-
-  //   </>
-  // );
 }
 // adult: false
 // backdrop_path: "/mCaolOVQ5Y9Hfv3R2izakXo6UJg.jpg"
