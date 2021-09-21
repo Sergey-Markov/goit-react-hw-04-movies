@@ -8,15 +8,15 @@ export async function fetchWithErrorFilms(url = "") {
     : Promise.reject(new Error("Not found"));
 }
 
-export function fetchTrendFilms(page) {
+export function fetchTrendFilms() {
   return fetchWithErrorFilms(
     `${BASE_URL}trending/movie/day?api_key=${API_KEY}`
   );
 }
 
-export function fetchMoviesBySearch(query) {
+export function fetchMoviesBySearch(search, page) {
   return fetchWithErrorFilms(
-    `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false)&query=${query}`
+    `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false&query=${search}`
   );
 }
 

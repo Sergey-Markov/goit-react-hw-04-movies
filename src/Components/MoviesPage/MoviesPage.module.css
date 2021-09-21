@@ -1,0 +1,15 @@
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.filmsList {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: normal;
+  list-style: circle;
+}
+.button {
+  padding: 5px;
+}

@@ -7,7 +7,7 @@ export default function HomePage() {
   const [trendFilms, setTrendFilms] = useState([]);
 
   useEffect(() => {
-    fetchFilmsAPI.fetchTrendFilms(1).then((response) => {
+    fetchFilmsAPI.fetchTrendFilms().then((response) => {
       setTrendFilms(response.results);
     });
   }, []);
@@ -19,9 +19,9 @@ export default function HomePage() {
       <ul className={s.filmsList}>
         {trendFilms &&
           trendFilms.map((film) => (
-            <NavLink key={film.id} to="/film">
-              {film.original_title}
-            </NavLink>
+            <li key={film.id}>
+              <NavLink to="/film">{film.original_title}</NavLink>
+            </li>
           ))}
       </ul>
     </>
