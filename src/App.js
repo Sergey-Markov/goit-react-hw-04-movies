@@ -16,12 +16,13 @@ function App() {
         <Route path="/" exact>
           <HomePage />
         </Route>
-        <Route path="/movie" exact>
-          <MoviesPage />
-        </Route>
         <Route path="/movies/:moviesId">
           <MovieDetailsPage />
         </Route>
+        <Route path="/movie">
+          <MoviesPage />
+        </Route>
+
         <Route>
           <NotFoundView />
         </Route>

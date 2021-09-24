@@ -1,0 +1,29 @@
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  /* border-bottom: 2px solid rgb(8, 8, 8); */
+}
+.button {
+  margin-bottom: 10px;
+}
+.fieldWhithPoster {
+  display: flex;
+  margin-bottom: 10px;
+}
+.poster {
+  margin-right: 20px;
+}
+.infoAboutFilm {
+  display: flex;
+  flex-direction: column;
+}
+.titles {
+  margin: 0;
+}
+.genresList {
+  margin: 0;
+}
+.additionalInfo {
+  border-top: 1px solid rgb(8, 8, 8);
+  border-bottom: 1px solid rgb(8, 8, 8);
+}

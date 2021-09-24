@@ -5,13 +5,14 @@ import s from "../HomePage/HomePage.module.css";
 
 export default function HomePage() {
   const [trendFilms, setTrendFilms] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const { url } = useRouteMatch();
   useEffect(() => {
     fetchFilmsAPI.fetchTrendFilms().then((response) => {
       setTrendFilms(response.results);
     });
   }, []);
-
+  console.log(url);
   // trendFilms.map(film=> console.log(film.original_title));
   return (
     <>
@@ -20,7 +21,7 @@ export default function HomePage() {
         {trendFilms &&
           trendFilms.map((film) => (
             <li key={film.id}>
-              <Link to={`/movies/${film.id}`}>{film.original_title}</Link>
+              <Link to={`${url}movies/${film.id}`}>{film.original_title}</Link>
             </li>
           ))}
       </ul>

@@ -5,7 +5,7 @@ export async function fetchWithErrorFilms(url = "") {
   const response = await fetch(url);
   return response.ok
     ? await response.json()
-    : Promise.reject(new Error("Not found"));
+    : Promise.reject(new Error("Это ошибка, её нужно как-то решить"));
 }
 
 export function fetchTrendFilms() {
