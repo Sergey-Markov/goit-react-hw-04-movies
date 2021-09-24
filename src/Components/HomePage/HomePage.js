@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { NavLink, useRouteMatch } from "react-router-dom";
 import * as fetchFilmsAPI from "../../Service/Service";
 import s from "../HomePage/HomePage.module.css";
 
@@ -21,7 +21,9 @@ export default function HomePage() {
         {trendFilms &&
           trendFilms.map((film) => (
             <li key={film.id}>
-              <Link to={`${url}movies/${film.id}`}>{film.original_title}</Link>
+              <NavLink to={`${url}movies/${film.id}`}>
+                {film.original_title}
+              </NavLink>
             </li>
           ))}
       </ul>

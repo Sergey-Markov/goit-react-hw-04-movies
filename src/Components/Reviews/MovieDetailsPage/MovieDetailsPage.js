@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, useRouteMatch, Route } from "react-router-dom";
 import s from "../MovieDetailsPage/MovieDetailsPage.module.css";
 import { fetchMovieById } from "../../../Service/Service";
+import Cast from "../Cast/Cast";
 
 const API_KEY = "ef978c42f38b248eb391638f72cc0144";
 
 export default function MovieDetailsPage() {
-  const { path } = useRouteMatch();
+  const { path, url } = useRouteMatch();
   const { moviesId } = useParams();
   const [movie, setMovie] = useState([]);
   const [status, setStatus] = useState("pending");
@@ -69,13 +70,16 @@ export default function MovieDetailsPage() {
           <h3>Additional information</h3>
           <ul>
             <li>
-              <Link to={`${path}/cast`}>Cast</Link>
+              <Link to={`${url}/cast`}>Cast</Link>
             </li>
             <li>
-              <Link to={`${path}/reviews`}>Reviews</Link>
+              <Link to={`${url}/reviews`}>Reviews</Link>
             </li>
           </ul>
         </div>
+        <Route path={`${path}/cast`}>
+          <Cast />
+        </Route>
       </div>
     );
   }
