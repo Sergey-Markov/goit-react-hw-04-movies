@@ -4,7 +4,7 @@ import HomePage from "./Components/HomePage/HomePage";
 import MoviesPage from "./Components/MoviesPage/MoviesPage";
 import Navigation from "./Components/Navigation/Navigation";
 import NotFoundView from "./Components/NotFoundView/NotFoundView";
-import MovieDetailsPage from "./Components/Reviews/MovieDetailsPage/MovieDetailsPage";
+import MovieDetailsPage from "./Components/Views/MovieDetailsPage/MovieDetailsPage";
 
 function App() {
   return (
