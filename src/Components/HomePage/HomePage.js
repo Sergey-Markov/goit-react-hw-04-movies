@@ -8,9 +8,14 @@ export default function HomePage() {
   // eslint-disable-next-line no-unused-vars
   const { url } = useRouteMatch();
   useEffect(() => {
-    fetchFilmsAPI.fetchTrendFilms().then((response) => {
-      setTrendFilms(response.results);
-    });
+    fetchFilmsAPI
+      .fetchTrendFilms()
+      .then((response) => {
+        setTrendFilms(response.results);
+      })
+      .catch((error) => {
+        console.log(`error: ${error}`);
+      });
   }, []);
 
   // trendFilms.map(film=> console.log(film.original_title));
