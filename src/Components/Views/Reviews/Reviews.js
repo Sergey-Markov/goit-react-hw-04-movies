@@ -32,14 +32,10 @@ export default function Reviews() {
   if (status === "pending") {
     return <div>Loading...</div>;
   }
-  if (status === "resolve") {
-    console.log(avtorArray);
-    console.log(movie);
+  if (status === "resolve" && movie.total_results !== 0) {
     return (
       <ul>
         {avtorArray.map((author) => {
-          console.log(author);
-
           return (
             <li key={author.id} className="">
               <h4 className="">Author: {author.author}</h4>
@@ -50,4 +46,5 @@ export default function Reviews() {
       </ul>
     );
   }
+  return <p>There is no reviews about watching this movie yet.</p>;
 }

@@ -32,7 +32,6 @@ export default function Cast() {
     return <div>Loading...</div>;
   }
   if (status === "resolve") {
-    console.log(movie);
     return (
       <ul>
         {movie.map((actor) => {

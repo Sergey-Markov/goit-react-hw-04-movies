@@ -12,7 +12,7 @@ export default function HomePage() {
       setTrendFilms(response.results);
     });
   }, []);
-  console.log(url);
+
   // trendFilms.map(film=> console.log(film.original_title));
   return (
     <>
