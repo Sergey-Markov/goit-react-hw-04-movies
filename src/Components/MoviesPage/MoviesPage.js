@@ -1,7 +1,7 @@
 import SearchForm from "../SearchForm/SearchForm";
 import { useState, useEffect } from "react";
 import { fetchMoviesBySearch } from "../../Service/Service";
-import { NavLink } from "react-router-dom";
+import { NavLink, useRouteMatch } from "react-router-dom";
 import s from "../MoviesPage/MoviesPage.module.css";
 
 export default function MoviesPage() {
@@ -9,6 +9,7 @@ export default function MoviesPage() {
   const [searchMovie, setSearchMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState("idle");
+  const { url } = useRouteMatch();
 
   useEffect(() => {
     if (!search) {
@@ -56,7 +57,7 @@ export default function MoviesPage() {
           {searchMovie &&
             searchMovie.map((film) => (
               <li key={film.id}>
-                <NavLink to="/films/:movie">
+                <NavLink to={`${url}/${film.id}`}>
                   {film.original_title} ({film.release_date})
                 </NavLink>
               </li>

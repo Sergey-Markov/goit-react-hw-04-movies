@@ -7,7 +7,7 @@ export default function Navigation() {
       <NavLink to="/" exact className={s.items} activeClassName={s.activeLink}>
         Home
       </NavLink>
-      <NavLink to="/movie" className={s.items} activeClassName={s.activeLink}>
+      <NavLink to="/movies" className={s.items} activeClassName={s.activeLink}>
         Movie
       </NavLink>
     </nav>
