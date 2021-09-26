@@ -1,18 +1,31 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useParams, useLocation, useHistory } from "react-router-dom";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Link, useRouteMatch, Route } from "react-router-dom";
 import s from "../MovieDetailsPage/MovieDetailsPage.module.css";
 import { fetchMovieById } from "../../../Service/Service";
-import Cast from "../Cast/Cast";
-import Reviews from "../Reviews/Reviews";
+// import Cast from "../Cast/Cast";
+// import Reviews from "../Reviews/Reviews";
 
-const API_KEY = "ef978c42f38b248eb391638f72cc0144";
+const Cast = lazy(() => import("../Cast/Cast" /*webpackChunkName: "Cast"*/));
+const Reviews = lazy(() =>
+  import("../Reviews/Reviews" /*webpackChunkName: "Reviews"*/)
+);
 
 export default function MovieDetailsPage() {
+  const history = useHistory();
   const { path, url } = useRouteMatch();
   const { moviesId } = useParams();
   const [movie, setMovie] = useState([]);
   const [status, setStatus] = useState("pending");
+  const location = useLocation();
+
+  // console.log("location:MovieDetailsPage", location);
+  // console.log("history:MovieDetailsPage", history);
+
+  function onGoBack() {
+    // history.goBack();
+    history.push(location?.state?.from ?? "/");
+  }
 
   useEffect(() => {
     if (!moviesId) {
@@ -33,7 +46,6 @@ export default function MovieDetailsPage() {
         console.log(`error: ${error}`);
       });
   }
-  // console.log(movie.genres.map((ganr) => ganr.name));
 
   if (status === "pending") {
     return <div>Loading...</div>;
@@ -41,13 +53,13 @@ export default function MovieDetailsPage() {
   if (status === "resolve") {
     return (
       <div className={s.container}>
-        <button type="button" className={s.button}>
+        <button type="button" className={s.button} onClick={onGoBack}>
           Go back
         </button>
         <div className={s.fieldWhithPoster}>
           <img
             className={s.poster}
-            src={`https://image.tmdb.org/t/p/w300${movie.poster_path}?api_key=${API_KEY}`}
+            src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
             alt={movie.title}
           />
           <div className={s.infoAboutFilm}>
@@ -78,12 +90,14 @@ export default function MovieDetailsPage() {
             </li>
           </ul>
         </div>
-        <Route path={`${path}/cast`}>
-          <Cast />
-        </Route>
-        <Route path={`${path}/reviews`}>
-          <Reviews />
-        </Route>
+        <Suspense fallback={<h1>LOADING...</h1>}>
+          <Route path={`${path}/cast`}>
+            <Cast />
+          </Route>
+          <Route path={`${path}/reviews`}>
+            <Reviews />
+          </Route>
+        </Suspense>
       </div>
     );
   }
