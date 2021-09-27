@@ -64,9 +64,14 @@ export default function MovieDetailsPage() {
           />
           <div className={s.infoAboutFilm}>
             {movie.original_title ? (
-              <h1>{movie.original_title}</h1>
+              <h1>
+                {movie.original_title}(
+                {new Date(movie.release_date).getFullYear()})
+              </h1>
             ) : (
-              <h1>{movie.title}</h1>
+              <h1>
+                {movie.title}({new Date(movie.release_date).getFullYear()})
+              </h1>
             )}
             <p>User Score: {Math.round(movie.vote_average)}%</p>
             <h2 className={s.titles}>Overview</h2>

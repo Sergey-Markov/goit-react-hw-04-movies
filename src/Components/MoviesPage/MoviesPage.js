@@ -82,10 +82,18 @@ export default function MoviesPage() {
       .catch((error) => {
         console.log(`error: ${error}`);
       });
+    avtoScroll();
   }
   function nextPage() {
     setPage((prevState) => prevState + 1);
   }
+
+  const avtoScroll = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  };
 
   if (status === "idle") {
     return <SearchForm onClick={onSubmitForm} onChange={onChange} />;
@@ -110,7 +118,8 @@ export default function MoviesPage() {
                       },
                     }}
                   >
-                    {film.original_title} ({film.release_date})
+                    {film.original_title} (
+                    {new Date(film.release_date).getFullYear()})
                   </NavLink>
                 </li>
               ))}
