@@ -88,10 +88,28 @@ export default function MovieDetailsPage() {
           <h3>Additional information</h3>
           <ul>
             <li>
-              <Link to={`${url}/cast`}>Cast</Link>
+              <Link
+                to={{
+                  pathname: `${url}/cast`,
+                  state: {
+                    from: history.location?.state?.from ?? "/",
+                  },
+                }}
+              >
+                Cast
+              </Link>
             </li>
             <li>
-              <Link to={`${url}/reviews`}>Reviews</Link>
+              <Link
+                to={{
+                  pathname: `${url}/reviews`,
+                  state: {
+                    from: history.location?.state?.from ?? "/",
+                  },
+                }}
+              >
+                Reviews
+              </Link>
             </li>
           </ul>
         </div>

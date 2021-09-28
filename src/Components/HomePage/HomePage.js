@@ -7,6 +7,7 @@ export default function HomePage() {
   const [trendFilms, setTrendFilms] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const { url } = useRouteMatch();
+
   useEffect(() => {
     fetchFilmsAPI
       .fetchTrendFilms()
